@@ -1,0 +1,57 @@
+{
+  "name": "picua",
+  "version": "1.0.0",
+  "description": "PiKVM Control Utility - A comprehensive Node.js library and CLI for controlling PiKVM devices",
+  "main": "src/picua.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "node src/picua.js",
+    "start-server": "node server.js",
+    "cli": "node cli.js",
+    "lint": "eslint src/",
+    "format": "prettier --write src/"
+  },
+  "keywords": [
+    "pikvm",
+    "kvm",
+    "remote-control",
+    "automation",
+    "nodejs",
+    "cli"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.63.1",
+    "axios": "^1.11.0",
+    "body-parser": "^1.20.2",
+    "commander": "^14.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^4.18.2",
+    "form-data": "^4.0.4",
+    "http-proxy-middleware": "^3.0.5",
+    "lottie-react": "^2.4.1",
+    "vnc-rfb-client": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^9.33.0",
+    "jest": "^30.0.5",
+    "prettier": "^3.6.2",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/picua.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/picua/issues"
+  },
+  "homepage": "https://github.com/yourusername/picua#readme"
+}

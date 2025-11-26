@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./dist/picua.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PiCUA - AI Control over your PC</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Load FFmpeg.js from LOCAL server (no CDN dependency) -->
+    <script>
+      console.log('[FFmpeg Loader] Loading FFmpeg from LOCAL server...');
+      
+      // Create script element for FFmpeg from local server
+      const ffmpegScript = document.createElement('script');
+      ffmpegScript.src = '/lib/ffmpeg.min.js'; // Served from your own server.js
+      ffmpegScript.async = false;
+      
+      ffmpegScript.onload = function() {
+        console.log('[FFmpeg Loader] ✅ FFmpeg script loaded successfully from LOCAL server');
+        
+        // Check what's actually available in window
+        console.log('[FFmpeg Loader] window.FFmpeg:', typeof window.FFmpeg);
+        console.log('[FFmpeg Loader] window.FFmpegWASM:', typeof window.FFmpegWASM);
+        console.log('[FFmpeg Loader] window.createFFmpeg:', typeof window.createFFmpeg);
+        console.log('[FFmpeg Loader] window.fetchFile:', typeof window.fetchFile);
+        
+        // Create window.FFmpeg object if needed
+        if (!window.FFmpeg) {
+          if (window.createFFmpeg && window.fetchFile) {
+            // Functions are global
+            window.FFmpeg = {
+              createFFmpeg: window.createFFmpeg,
+              fetchFile: window.fetchFile
+            };
+            console.log('[FFmpeg Loader] Created window.FFmpeg from global functions');
+          } else if (window.FFmpegWASM) {
+            // Exported as FFmpegWASM
+            window.FFmpeg = window.FFmpegWASM;
+            console.log('[FFmpeg Loader] Created window.FFmpeg alias for FFmpegWASM');
+          }
+        }
+        
+        console.log('[FFmpeg Loader] Final window.FFmpeg available:', !!window.FFmpeg);
+        
+        if (window.FFmpeg) {
+          console.log('[FFmpeg Loader] FFmpeg object keys:', Object.keys(window.FFmpeg));
+          console.log('[FFmpeg Loader] createFFmpeg type:', typeof window.FFmpeg.createFFmpeg);
+        } else {
+          console.error('[FFmpeg Loader] ❌ Could not create window.FFmpeg object');
+        }
+      };
+      
+      ffmpegScript.onerror = function(error) {
+        console.error('[FFmpeg Loader] ❌ Failed to load FFmpeg from local server');
+        console.error('[FFmpeg Loader] Error details:', error);
+        console.error('[FFmpeg Loader] Script src:', ffmpegScript.src);
+        console.error('[FFmpeg Loader] Make sure ffmpeg.min.js exists in the public/ directory');
+        
+        // Store error for later retrieval
+        window.ffmpegLoadError = {
+          error: 'Failed to load FFmpeg from local server',
+          src: ffmpegScript.src,
+          timestamp: new Date().toISOString(),
+          message: 'FFmpeg library file not found. Please download and place in public/ directory.'
+        };
+      };
+      
+      // Append script to document
+      document.head.appendChild(ffmpegScript);
+      console.log('[FFmpeg Loader] Loading from local server:', ffmpegScript.src);
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
