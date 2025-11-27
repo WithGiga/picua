@@ -20,7 +20,7 @@
     "cli"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.63.1",
     "axios": "^1.11.0",

@@ -217,7 +217,7 @@ npm run build   # build frontend
 
 ## License
 
-This project is licensed under the **ISC License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
