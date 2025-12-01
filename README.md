@@ -1,7 +1,7 @@
 # PiCUA – World's First Physical Computer-Use AI Agent
 
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/WithGiga?logo=GitHub%20Sponsors&style=social)](https://github.com/sponsors/WithGiga)
-[![Buy us a coffee](https://img.shields.io/badge/Buy%20us%20a%20coffee-FF5E5B?logo=buy-me-a-coffee)](https://buymeacoffee.com/withgiga)
+
 
 PiCUA is an AI‑first experience for **controlling any device**, combining a hosted assistant, an HTTP API, and a modern web UI. It is designed for both non‑technical users and developers who want reliable, scriptable remote control.
 
